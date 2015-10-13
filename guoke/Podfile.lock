@@ -1,0 +1,16 @@
+PODS:
+  - MBProgressHUD (0.9.1)
+  - MJExtension (2.5.12)
+  - SVProgressHUD (1.1)
+
+DEPENDENCIES:
+  - MBProgressHUD
+  - MJExtension
+  - SVProgressHUD
+
+SPEC CHECKSUMS:
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  MJExtension: 5ab633484e431f777387c70b676c80f993361f1b
+  SVProgressHUD: 54de4d9ab38aa3f688da401f5766a5738084e7fb
+
+COCOAPODS: 0.38.2
