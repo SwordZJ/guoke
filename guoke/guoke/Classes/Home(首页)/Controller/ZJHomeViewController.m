@@ -7,31 +7,44 @@
 //
 
 #import "ZJHomeViewController.h"
+#import "XMGWaterflowLayout.h"
 
-@interface ZJHomeViewController ()
+@interface ZJHomeViewController ()<XMGWaterflowLayoutDelegate>
 
 @end
 
 @implementation ZJHomeViewController
-
+static NSString *const ZJNewsCellID = @"newsCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:ZJNewsCellID];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (instancetype)init{
+    
+    XMGWaterflowLayout *layout = [[XMGWaterflowLayout alloc] init];
+    layout.delegate = self;
+    return [super initWithCollectionViewLayout:layout];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark -  <UICollectionViewDelegate, UICollectionViewDataSource>
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return 100;
 }
-*/
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ZJNewsCellID forIndexPath:indexPath];
+    cell.backgroundColor = ZJRandomColor;
+    
+    return cell;
+}
+
+#pragma mark - <XMGWaterflowLayoutDelegate>
+- (CGFloat)waterflowLayout:(XMGWaterflowLayout *)waterflowLayout heightForItemAtIndex:(NSUInteger)index itemWidth:(CGFloat)itemWidth{
+//    NSUInteger columnCount = (NSInteger)[self columnCountInWaterflowLayout:waterflowLayout];
+    
+    CGFloat height = arc4random_uniform(5) % 3 * 50 + 100;
+    return height;
+}
 
 @end

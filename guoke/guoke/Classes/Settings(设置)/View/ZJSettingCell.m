@@ -37,6 +37,7 @@
     return self;
 }
 
+#pragma mark - 控件懒加载
 -(UIImageView *)IconView{
     if (!_IconView ) {
         _IconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellArrow"]];
@@ -48,6 +49,8 @@
 -(UISwitch *)rightSwitch{
     if (!_rightSwitch) {
         _rightSwitch = [[UISwitch alloc] init];
+        _rightSwitch.on = [[NSUserDefaults standardUserDefaults] objectForKey:self.item.title];
+        [_rightSwitch addTarget:self action:@selector(switchChange:) forControlEvents:UIControlEventValueChanged];
     }
     return _rightSwitch;
 }
@@ -66,6 +69,12 @@
 }
 
 
+#pragma mark - 事件处理
+- (void)switchChange:(UISwitch *)rightSwitch{
+    [[NSUserDefaults standardUserDefaults] setBool:rightSwitch.isOn forKey:self.item.title];
+}
+
+#pragma mark - 重写模型的setter方法，设置数据
 - (void)setItem:(ZJSettingItem *)item{
     _item = item;
     

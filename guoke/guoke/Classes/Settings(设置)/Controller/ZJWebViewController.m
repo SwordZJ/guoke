@@ -17,9 +17,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-
+    
+    
+    NSURL *url = [NSURL URLWithString:@"http://www.baidu.com"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [self.webView loadRequest:request];
 }
-
 
 @end

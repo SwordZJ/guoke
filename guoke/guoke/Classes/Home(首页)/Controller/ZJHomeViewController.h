@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ZJHomeViewController : UIViewController
+@interface ZJHomeViewController : UICollectionViewController
 
 @end

@@ -7,14 +7,12 @@
 //
 
 #import "ZJRegisterViewController.h"
-
+#import "ZJWebViewController.h"
 @interface ZJRegisterViewController ()
 
 @end
 
 @implementation ZJRegisterViewController
-
-
 
 
 - (void)viewDidLoad {
@@ -34,15 +32,12 @@
 
 
 - (IBAction)userProcotol:(id)sender {
-    
-    
+    ZJWebViewController *webVc = [[ZJWebViewController alloc] init];
+    webVc.title = @"用户须知";
+    [self.navigationController pushViewController:webVc animated:YES];
 }
-@end
-
-
-
-
-
 
 
 @end
+
+

@@ -12,6 +12,7 @@
 #ifdef __OBJC__
 #import "UIView+Extension.h"
 #import "UIBarButtonItem+Extension.h"
+#import "ZJConst.h"
 
 // 屏幕尺寸
 #define kScreenBounds [UIScreen mainScreen].bounds

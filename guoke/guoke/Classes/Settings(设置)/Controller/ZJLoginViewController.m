@@ -8,6 +8,7 @@
 
 #import "ZJLoginViewController.h"
 #import "ZJRegisterViewController.h"
+#import "UMSocial.h"
 @interface ZJLoginViewController ()
 
 @end
@@ -38,6 +39,51 @@
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     [self.view endEditing:YES];
+}
+
+
+#pragma mark 第三方登录
+- (IBAction)wechatLogin:(UIButton *)sender {
+    
+}
+
+- (IBAction)tencentLogin:(UIButton *)sender {
+//    
+//    UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToQQ];
+//    
+//    snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
+//        
+//        //          获取微博用户名、uid、token等
+//        
+//        if (response.responseCode == UMSResponseCodeSuccess) {
+//            
+//            UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary] valueForKey:UMShareToQQ];
+//            
+//            NSLog(@"username is %@, uid is %@, token is %@ url is %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.iconURL);
+//            
+//        }});
+}
+
+/**
+ *  新浪微博登录
+ */
+- (IBAction)sinaLogin:(UIButton *)sender {
+    UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToSina];
+    
+    snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
+        
+        //          获取微博用户名、uid、token等
+        
+        if (response.responseCode == UMSResponseCodeSuccess) {
+            
+            UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary] valueForKey:UMShareToSina];
+            
+            NSLog(@"username is %@, uid is %@, token is %@ url is %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.iconURL);
+            
+        }});
+}
+
+- (IBAction)alipayLogin:(UIButton *)sender {
 }
 
 @end
